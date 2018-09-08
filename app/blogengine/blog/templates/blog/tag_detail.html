@@ -8,7 +8,7 @@
 
 {% block content  %}
     <h1 class="mb-5"> Posts with {{ tag.title| title }} tag: </h1>
-        {% for tag  in tag.posts.all    %}
+        {% for post  in tag.posts.all    %}
             <div class="card mb-4">
                 <div class="card-header">
                     {{post.date_pub}}
