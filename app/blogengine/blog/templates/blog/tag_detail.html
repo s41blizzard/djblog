@@ -7,14 +7,14 @@
 
 
 {% block content  %}
-    <h1 class="mb-5"> Posts with {{ tag.title| title }} tag: </h1>
-        {% for post  in tag.posts.all    %}
+    <h3 class="mb-5" style="width: 18rem; text-align:center; border: 1px solid blue; margin: auto;"> Posts with "{{ tag.title| title }}" tag: </h3>
+    {% for post  in tag.posts.all    %}
 
 
-            {% include 'blog/includes/post_card_template.html'  %}
+    {% include 'blog/includes/post_card_template.html'  %}
 
 
-        {% endfor %}
+{% endfor %}
 
 
 {% endblock%}
