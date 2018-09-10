@@ -1,7 +1,7 @@
 from django import forms
 from django.core.exceptions import ValidationError
 
-from .models import Tag
+from .models import Tag, Post
 
 
 class TagForm(forms.ModelForm):
@@ -21,3 +21,14 @@ class TagForm(forms.ModelForm):
         if Tag.objects.filter(slug__iexact=new_slug).count():
             raise ValidationError('Slug has to be unique')
         return new_slug
+
+
+class PostForm(forms.ModelForm):
+    class Meta:
+        model = Post
+        fields = ['title', 'slug', 'body', 'tags']
+        widgets = {
+            'title': forms.TextInput(attrs={'class': 'form-control'}),
+            'slug': forms.TextInput(attrs={'class': 'form-control'})
+
+        }
