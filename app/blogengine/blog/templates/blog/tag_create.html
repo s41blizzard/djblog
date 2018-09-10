@@ -7,7 +7,7 @@
 {% endblock%}
 
 {% block content  %}
-<form class="form_group" style="width: 25rem; text-align:center; margin: auto;" action="{% url 'tag_create_url'  %}" method="post">
+<form class="form_group" action="{% url 'tag_create_url'  %}" method="post">
     {% csrf_token %}
     {% for field in form %}
 
