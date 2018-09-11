@@ -21,7 +21,6 @@ class PostCreate(ObjectCreateMixin, View):
     template = 'blog/post_create_form.html'
 
 
-
 def tags_list(request):
     tags = Tag.objects.all
     return render(request, 'blog/tags_list.html', context={'tags': tags})
@@ -35,3 +34,10 @@ class TagDetail(ObjectDetailMixin, View):
 class TagCreate(ObjectCreateMixin, View):
     form_model = TagForm
     template = 'blog/tag_create.html'
+
+
+class TagUpdate(View):
+    def get(self, request, slug):
+        tag = Tag.objects.get(slug__iexact=slug)
+        bound_form = TagForm(instance=tag)
+        return render(request, 'blog/tag_update_form.html', context={'form': bound_form, 'tag': tag})
