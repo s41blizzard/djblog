@@ -31,6 +31,9 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
+    def get_delete_url(self):
+        return reverse('post_delete_url', kwargs={'slug': self.slug})
+
 
 class Tag(models.Model):
     title = models.CharField(max_length=50)
@@ -44,3 +47,6 @@ class Tag(models.Model):
 
     def __str__(self):
         return '{}'.format(self.title)
+
+    def get_delete_url(self):
+        return reverse('tag_delete_url', kwargs={'slug': self.slug})
